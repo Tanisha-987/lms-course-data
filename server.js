@@ -1,11 +1,14 @@
 const express = require('express');
 const db = require('./database');
 const Course = require("./models/course")
+const cors = require('cors');
+
 // const upload = require("./config/multer")
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 // Connect to the database
 db();
