@@ -22,9 +22,9 @@ db();
 // POST route to add course data
 app.post("/add/data", async (req, res) => {
   try {
-    const { title, src, thumbnail, description, price } = req.body;
+    const { title, src, thumbnail, description, price , duration, instructor } = req.body;
 
-    const newCourse = new Course({ title, src, thumbnail, description, price });
+    const newCourse = new Course({ title, src, thumbnail, description, price ,duration , instructor});
     await newCourse.save();
 
     res.status(201).json({ message: "data added successfully!" });
