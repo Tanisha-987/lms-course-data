@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("./database");
 const Course = require("./models/course");
+const updateAllCourses = require("./models/updateDB")
 const NewUsers = require("./models/signup");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
@@ -45,6 +46,13 @@ app.get("/view/data", async (req, res) => {
       .json({ message: "Failed to fetch course data", error: error.message });
   }
 });
+
+// update data 
+app.get("/update", async (req, res) => {
+    await updateAllCourses();
+    res.send("Courses updated successfully!");
+});
+
 
 // post route for signup
 app.post("/signup", async (req, res) => {
